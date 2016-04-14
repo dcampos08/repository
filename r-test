@@ -1,4 +1,4 @@
 x <- Sys.getenv('input1')
 y <- Sys.getenv('input2')
 
-input1*input2
+x*y

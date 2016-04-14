@@ -1,9 +1,5 @@
 a <- Sys.getenv('input1')
 
-b <-as.numeric(a)
-
 c <- Sys.getenv('input2')
 
-d <- as.numeric(c)
-
-b*d
+a*c

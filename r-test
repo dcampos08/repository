@@ -1,1 +1,2 @@
-has_devel()
+library(datasets)
+head(AirPassengers)

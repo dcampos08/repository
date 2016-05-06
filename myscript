@@ -1,5 +1,10 @@
-a <- as.numeric(Sys.getenv('input1'))
+library( civis.r.client )
 
-c <- as.numeric(Sys.getenv('input2'))
-
-a*c
+write_civis(
+  df=dataframe,
+  tablename='schema.new_table',
+  database='database',
+  distkey='id',
+  sortkey1='id'
+  sql=paste('select * from schema.old_table where id = x' )
+)

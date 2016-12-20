@@ -5,10 +5,10 @@
 library( civis.r.client )
 
 # Example of reading in a table from Redshift
-tpc <- read_civis( 
-  database='Civis Database',
-  tablename='retail.customers'
-)
+#tpc <- read_civis( 
+#  database='Civis Database',
+#  tablename='retail.customers'
+#)
 
 # Example of querying from Redshift
 #tpc.example <- read_civis(

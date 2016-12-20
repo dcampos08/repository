@@ -11,17 +11,17 @@ tpc <- read_civis(
 )
 
 # Example of querying from Redshift
-tpc.example <- read_civis(
-  database='Civis Database',
-  sql=paste( 'select * from retail.customers limit 50' )
-)
+#tpc.example <- read_civis(
+#  database='Civis Database',
+#  sql=paste( 'select * from retail.customers limit 50' )
+#)
 
 # Example of writing to Readshift
-write_civis(
-  df=tpc.example,
-  tablename='retail.customers_limited',
-  database='Civis Database',
-  distkey='person_id',
-  sortkey1='person_id'
-)
+#write_civis(
+#  df=tpc.example,
+#  tablename='retail.customers_limited',
+#  database='Civis Database',
+#  distkey='person_id',
+#  sortkey1='person_id'
+#)
 

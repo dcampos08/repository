@@ -1,13 +1,20 @@
 import os
-
 import civis
+import pandas as pd
 
-client=civis.APIClient()
+input_table = os.environ['scratch.states_years_pivot']
+id_vars = os.environ['year']
+new_column_name = os.environ['state']
+output_table = os.environ['scratch.states_years']
 
-events = civis.io.read_civis_sql(sql="SELECT e.eventid, max(es.eventshiftid) as eventshiftid, max(l.locationid) as locationid FROM vansync.tsm_etgs_events_mym e JOIN vansync.tsm_etgs_eventshifts_mym es USING (eventid) JOIN vansync.tsm_etgs_eventslocations_mym l USING (eventid) GROUP BY 1 ORDER BY 1",database="Everytown for Gun Safety",use_pandas=True)
+df = civis.io.read_civis(table=input_table
+                         ,database=326
+                         ,use_pandas=True)
 
-drop = civis.io.query_civis(sql="drop table if exists public.python_example", database='Everytown for Gun Safety')
+df_melt = pd.melt(df,id_vars=id_vars,var_name=new_column_name)
 
-drop.result()
+print(df_melt)
 
-civis.io.dataframe_to_civis(df=events, database='Everytown for Gun Safety', table='public.python_example')
+long_table_result = civis.io.dataframe_to_civis(df_melt,database=326
+                                               ,table=output_table
+                                               ,existing_table_rows='truncate')
